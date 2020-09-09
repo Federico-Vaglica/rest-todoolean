@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    readList();
 
     $(document).on('click','.add-btn', function(){
         $('.main').html('')
@@ -9,6 +10,7 @@ $(document).ready(function(){
             createElement(newElement)
             readList();         
         }  
+        $('.input-add').val('')
            
     })
 
@@ -20,11 +22,10 @@ $(document).ready(function(){
     })
 
     $(document).on('click','.update', function (){
-        $('.main').html('')
+        
         var id = $(this).attr('data-id');
-        var text = $('.input [data-id="' + id + '"]').val();
-        console.log(id);
-        console.log(text)
+        var text = $('.inputField[data-id="' + id + '"]').val();
+      
 
         upDateElement(id,text)
     })
@@ -101,8 +102,8 @@ $(document).ready(function(){
                   text: toUpdate
               },
 
-              success: function (){
-
+              success: function (data){
+                  $('.main').html('');
                   readList()
               },
               error: function () {
