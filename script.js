@@ -14,6 +14,20 @@ $(document).ready(function(){
            
     })
 
+    $('input').on('keypress',function(a) {
+      if(a.which == 13 || a.keyCode == 13) {
+        $('.main').html('')
+        var newElement = $('.input-add').val();
+
+        if(newElement.length != 0){
+            $('.list').html('')
+            createElement(newElement)
+            readList();         
+        }  
+        $('.input-add').val('')
+      }
+  });
+
     $(document).on('click','.delete', function (){
         $('.main').html('')
         var elementDelete = $(this)
@@ -29,6 +43,8 @@ $(document).ready(function(){
 
         upDateElement(id,text)
     })
+
+    
 
     
     
